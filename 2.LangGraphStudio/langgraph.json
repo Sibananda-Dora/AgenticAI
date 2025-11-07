@@ -1,7 +1,8 @@
+
 {
     "dependencies":["."],
     "graphs":{
         "gemini_agent":"./gemini_chatagent.py:agent"
     },
-    "env":"../.env"  # give the path to your .env file
+    "env":"../.env" 
 }
