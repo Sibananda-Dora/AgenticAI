@@ -15,7 +15,7 @@ from langchain_core.messages import HumanMessage,AIMessage,AnyMessage
 load_dotenv()
 os.environ["TAVILY_API_KEY"]=os.getenv("TAVILY_API_KEY")
 
-api_wrapper_arxiv=ArxivAPIWrapper(top_k_results=2,doc_content_chars_max=500)
+api_wrapper_arxiv=ArxivAPIWrapper(top_k_results=2,doc_content_chars_max=1500)
 arxiv=ArxivQueryRun(api_wrapper=api_wrapper_arxiv)
 # result=arxiv.invoke("Attention is all you need.")
 # print(result)
@@ -54,7 +54,7 @@ builder.add_conditional_edges("tool_calling_llm",tools_condition,)
 builder.add_edge("tools",END)
 
 graph_builder=builder.compile()
-y=graph_builder.invoke({"messages":HumanMessage(content="Operation White Sea")})
+y=graph_builder.invoke({"messages":HumanMessage(content=input("Enter your query"))})
 for x in y["messages"]:
     print(x.pretty_print())
 
